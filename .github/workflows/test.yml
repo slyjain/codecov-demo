@@ -1,15 +1,22 @@
 name: test
+
 on: [push]
+
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - run: npm install
-      - run: npm run coverage
+      - run: npx jest --coverage
 
-      - uses: codecov/codecov-action@v4
-
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage/lcov.info
