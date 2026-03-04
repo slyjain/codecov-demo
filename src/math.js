@@ -2,7 +2,10 @@ function add(a,b){
     return a+b;
 }
 function isEven(n){
-    return n%2==0;
+    if(n % 2 === 0){
+        return true;
+    }
+    return false;
 }
 module.exports={
     add,isEven
